@@ -1,0 +1,1 @@
+Building a pair of robots who pay the humans in the famous balcony scene from "Romeo and Juliet".
