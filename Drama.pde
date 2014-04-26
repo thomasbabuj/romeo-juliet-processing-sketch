@@ -8,10 +8,15 @@ public class Drama extends Thread {
   ArrayList lines;
   boolean running;
   
-  public Drama(ArrayList lines) {
+  TTS romeo;
+  TTS juliet;
+  
+  public Drama(ArrayList lines, TTS romeo, TTS juliet) {
     this.lines = lines;
+    this.romeo = romeo;
+    this.juliet = juliet;
     current = 0;
-    running = false;
+    running = false;    
   }
   
   public int getCurrent() {
@@ -32,19 +37,18 @@ public class Drama extends Thread {
   
   public void run() {
     running = true;        
-  
+    
     for( int i=0; i< lines.size(); i++ ) {
       current = i;
-      try {
       Line l = (Line)lines.get(i);
-      System.out.println(l.text);
-      delay(1);
-      } catch(Exception e) {
-        System.out.println("Exception " +e);
-      }    
+      if( "J".equals( l.speaker)) {
+         juliet.speakLeft(l.text);
+      } else if ( "R".equals( l.speaker )) {
+         romeo.speakRight(l.text);
+      }   
     }    
     running = false;
-    interrupt();
+    //interrupt();
   }
 }
     
