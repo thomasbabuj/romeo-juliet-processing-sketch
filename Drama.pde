@@ -31,9 +31,7 @@ public class Drama extends Thread {
   }
   
   public void run() {
-    running = true;
-    
-    System.out.println("I am running");
+    running = true;        
   
     for( int i=0; i< lines.size(); i++ ) {
       current = i;
@@ -44,8 +42,7 @@ public class Drama extends Thread {
       } catch(Exception e) {
         System.out.println("Exception " +e);
       }    
-    }
-    
+    }    
     running = false;
     interrupt();
   }
